@@ -1,0 +1,255 @@
+/* Header styles */
+.contenedor-header {
+    background-color: #f0f0f0; 
+    padding: 20px;
+    text-align: center; 
+  }
+  
+  .logo {
+    font-size: 24px; 
+    font-weight: bold; 
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    justify-content: space-between; 
+  }
+  
+  nav li {
+    margin-right: 20px; 
+  }
+  
+  nav a {
+    color: #333; 
+    text-decoration: none; 
+    transition: color 0.2s ease; 
+  }
+  
+  nav a:hover {
+    color: #00539f; 
+  }
+  
+  .nav-responsive {
+    display: none; 
+    cursor: pointer;
+  }
+  
+  /* Responsive styles */
+  @media only screen and (max-width: 768px) {
+   .nav-responsive {
+      display: block; 
+    }
+    nav ul {
+      display: none; 
+    }
+  }
+  
+  /* Main content styles */
+  .director {
+    margin: 40px auto; 
+    padding: 20px; 
+    background-color: #fff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+  }
+  
+  .director img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 10px; 
+    text-align: center;
+  }
+  
+  .nombre {
+    font-size: 24px; 
+    font-weight: bold; 
+    margin-bottom: 20px; 
+  }
+  
+  .descrip {
+    font-size: 18px; 
+    margin-bottom: 20px; 
+  }
+  
+  /* Footer styles */
+  .footer {
+    background-color: #f0f0f0; 
+    padding: 20px; 
+    text-align: center; 
+  }
+  
+  .arriba {
+    display: block; 
+    margin: 20px auto; 
+  }
+  
+  .redes {
+    margin-top: 20px; 
+  }
+  
+  .redes a {
+    margin-right: 20px; 
+  }
+
+  /*Arreglos*/
+
+  .zz {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+  }
+  
+  .zz > div {
+    margin: 20px; 
+    width: 30%; 
+  }
+  
+  .zz iframe {
+    width: 100%; 
+    height: 300px; 
+    border: none; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  h2 {
+    text-align: center; 
+    margin-bottom: 20px; 
+  }
+
+  /* stylo sction todo */
+.todo {
+
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #efdada;
+    border: 1px solid #271f1f;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .Product {
+
+    margin: 20px;
+    padding: 20px;
+    border-bottom: 1px solid #e76565;
+  }
+  
+
+  .Product h2 {
+    
+    font-size: 18px;
+    color: #333;
+    margin-top: 0;
+  }
+  
+
+  .Product p {
+  
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  /* Centrados */
+.servi {
+  
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+  }
+  
+ 
+  .servi h1 {
+    
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  
+  .servi p {
+    
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  
+  .servi img {
+  
+    width: 80%;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  
+  
+  .list {
+  
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .list ul {
+   
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  
+  .list li {
+  
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+
+  .list a {
+    
+    text-decoration: none;
+    color: #337ab7;
+  }
+  
+  
+  .pet {
+    
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+ 
+  .pet p {
+    
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+
+  .pet button[type="submit"] {
+   
+    background-color: #337ab7;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+
+  .pet button[type="submit"]:hover {
+
+    background-color: #23527c;
+  }

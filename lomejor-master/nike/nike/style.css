@@ -1,0 +1,78 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("img/photo-1636718282214-0b4162a154f0.avif");
+  opacity: 1;
+  color: rgb(15, 16, 17);
+}
+
+/* Estilos para la galería */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 57vh;
+}
+h1 {
+  text-align: center;
+  color: aqua;
+  font-family: initial;
+  font-size: 100px;
+}
+.container1 {
+  text-align: -moz-center;
+  color: aquamarine;
+  text-align: center;
+  font-size: 40px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery-item {
+  width: 300px;
+  margin: 20px;
+  text-align: center;
+  color: white;
+}
+
+.gallery-frame {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.gallery-img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.text-label {
+  color: coral;
+  font-size: 40px;
+}
+
+.text-dark {
+  color: white;
+}
+
+.text {
+  color: white;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .gallery-item {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+footer {
+  background-color: aqua;
+  font-size: larger;
+  text-align: center;
+}

@@ -1,0 +1,87 @@
+body{
+    background-color:white;
+    margin: auto;
+    font-family: arial;
+   font-size: medium;
+}
+
+.formulario{
+    text-align: center;
+
+}
+.action{
+    text-align: center;
+    font-size: 20px;
+    margin: 5px;
+    border-radius: 3%;
+}
+.izquierda{
+    text-align: center;
+}
+
+.derecha{
+    text-align: center-right;
+}
+
+
+/*body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    displa
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+   align-items: rigth;
+}
+
+.formulario {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.action {
+    text-align: center;
+    margin-top: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 41%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.izquierdo {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.derecha {
+    float: right;
+    width: 50%;
+    text-align: center;
+}
+
+.action {
+    clear: both;
+}
+*/

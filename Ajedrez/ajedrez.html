@@ -1,0 +1,275 @@
+<html>
+  <head>
+    <base href="https://chessmaster.com/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Ajedrez/css.css" />
+    <title>ChessMaster - Juego de Ajedrez Online</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+      .game-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .chessboard {
+        width: 400px;
+        height: 400px;
+        border: 2px solid #333;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+      }
+      .square {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        cursor: pointer;
+      }
+      .white {
+        background-color: #f0d9b5;
+      }
+      .black {
+        background-color: #b58863;
+      }
+      .selected {
+        background-color: #7fc97f;
+      }
+      .possible-move {
+        background-color: #8888ff;
+      }
+      .controls {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      .status {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="chessboard" id="chessboard"></div>
+      <div class="controls">
+        <button id="newGameBtn">Nueva Partida</button>
+        <button id="undoBtn">Deshacer</button>
+      </div>
+      <div class="status" id="status"></div>
+    </div>
+
+    <script>
+      const chessboard = document.getElementById("chessboard");
+      const statusDisplay = document.getElementById("status");
+      const newGameBtn = document.getElementById("newGameBtn");
+      const undoBtn = document.getElementById("undoBtn");
+
+      let board = [];
+      let selectedPiece = null;
+      let currentPlayer = "white";
+      let moveHistory = [];
+
+      const initialBoard = [
+        ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
+        ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
+        ["", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", ""],
+        ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
+        ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"],
+      ];
+
+      function initializeBoard() {
+        board = JSON.parse(JSON.stringify(initialBoard));
+        currentPlayer = "white";
+        selectedPiece = null;
+        moveHistory = [];
+        renderBoard();
+        updateStatus();
+      }
+
+      function renderBoard() {
+        chessboard.innerHTML = "";
+        for (let row = 0; row < 8; row++) {
+          for (let col = 0; col < 8; col++) {
+            const square = document.createElement("div");
+            square.className = `square ${
+              (row + col) % 2 === 0 ? "white" : "black"
+            }`;
+            square.dataset.row = row;
+            square.dataset.col = col;
+            square.textContent = board[row][col];
+            square.addEventListener("click", () => handleSquareClick(row, col));
+            chessboard.appendChild(square);
+          }
+        }
+      }
+
+      function handleSquareClick(row, col) {
+        const piece = board[row][col];
+
+        if (selectedPiece) {
+          if (isValidMove(selectedPiece.row, selectedPiece.col, row, col)) {
+            movePiece(selectedPiece.row, selectedPiece.col, row, col);
+            selectedPiece = null;
+            switchPlayer();
+          } else {
+            selectedPiece = null;
+          }
+        } else if (piece && isPieceOwnedByCurrentPlayer(piece)) {
+          selectedPiece = { row, col };
+        }
+
+        renderBoard();
+        updateStatus();
+      }
+
+      function isValidMove(fromRow, fromCol, toRow, toCol) {
+        const piece = board[fromRow][fromCol];
+        const target = board[toRow][toCol];
+
+        // Implementación básica de reglas de movimiento
+        if (isPieceOwnedByCurrentPlayer(target)) return false;
+
+        switch (piece.toLowerCase()) {
+          case "♟":
+          case "♙":
+            // Peón
+            const direction = currentPlayer === "white" ? -1 : 1;
+            if (fromCol === toCol && !target) {
+              if (toRow === fromRow + direction) return true;
+              if (
+                (currentPlayer === "white" && fromRow === 6) ||
+                (currentPlayer === "black" && fromRow === 1)
+              ) {
+                if (toRow === fromRow + 2 * direction) return true;
+              }
+            }
+            if (
+              Math.abs(fromCol - toCol) === 1 &&
+              toRow === fromRow + direction &&
+              target
+            )
+              return true;
+            break;
+          case "♜":
+          case "♖":
+            // Torre
+            if (fromRow === toRow || fromCol === toCol) return true;
+            break;
+          case "♞":
+          case "♘":
+            // Caballo
+            const rowDiff = Math.abs(fromRow - toRow);
+            const colDiff = Math.abs(fromCol - toCol);
+            if (
+              (rowDiff === 2 && colDiff === 1) ||
+              (rowDiff === 1 && colDiff === 2)
+            )
+              return true;
+            break;
+          case "♝":
+          case "♗":
+            // Alfil
+            if (Math.abs(fromRow - toRow) === Math.abs(fromCol - toCol))
+              return true;
+            break;
+          case "♛":
+          case "♕":
+            // Reina
+            if (
+              fromRow === toRow ||
+              fromCol === toCol ||
+              Math.abs(fromRow - toRow) === Math.abs(fromCol - toCol)
+            )
+              return true;
+            break;
+          case "♚":
+          case "♔":
+            // Rey
+            if (
+              Math.abs(fromRow - toRow) <= 1 &&
+              Math.abs(fromCol - toCol) <= 1
+            )
+              return true;
+            break;
+        }
+
+        return false;
+      }
+
+      function movePiece(fromRow, fromCol, toRow, toCol) {
+        moveHistory.push({
+          from: { row: fromRow, col: fromCol },
+          to: { row: toRow, col: toCol },
+          piece: board[fromRow][fromCol],
+          captured: board[toRow][toCol],
+        });
+
+        board[toRow][toCol] = board[fromRow][fromCol];
+        board[fromRow][fromCol] = "";
+      }
+
+      function switchPlayer() {
+        currentPlayer = currentPlayer === "white" ? "black" : "white";
+      }
+
+      function isPieceOwnedByCurrentPlayer(piece) {
+        if (!piece) return false;
+        return (
+          (currentPlayer === "white" && piece === piece.toUpperCase()) ||
+          (currentPlayer === "black" && piece === piece.toLowerCase())
+        );
+      }
+
+      function updateStatus() {
+        statusDisplay.textContent = `Turno del jugador: ${
+          currentPlayer === "white" ? "Blancas" : "Negras"
+        }`;
+      }
+
+      function undoLastMove() {
+        if (moveHistory.length === 0) return;
+
+        const lastMove = moveHistory.pop();
+        board[lastMove.from.row][lastMove.from.col] = lastMove.piece;
+        board[lastMove.to.row][lastMove.to.col] = lastMove.captured;
+
+        switchPlayer();
+        renderBoard();
+        updateStatus();
+      }
+
+      newGameBtn.addEventListener("click", initializeBoard);
+      undoBtn.addEventListener("click", undoLastMove);
+
+      initializeBoard();
+    </script>
+  </body>
+</html>

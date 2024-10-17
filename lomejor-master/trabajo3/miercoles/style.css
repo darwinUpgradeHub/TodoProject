@@ -1,0 +1,40 @@
+header{
+    background-color: wheat;
+    
+}
+
+
+.nombre {
+    display:flex;
+    flex-wrap: wrap;
+    color:blue;
+    margin: 5%;
+    text-align: center;
+    font-family: sans-serif;
+    padding: 5px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.ropita {
+    text-align: center;
+    font-family: sans-serif;
+    padding: 5px;
+    text-align: center;
+    font-family: sans-serif;
+    padding: 5px;
+    margin: auto;
+    box-sizing: border-box;
+ }
+
+ .logo{
+    text-align: center;
+    color:rgb(42, 67, 165);
+    font-size: 50px;
+    text-align: center;
+ }
+ .logito{
+    text-align: right;
+    color:aqua;
+ }
+ 

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<body>
+
+<!--MENU ENCABEZADO-->
+<div class="contenedor-header">
+    <header>
+        <div class="logo">
+            <a href="index.html">Mi LOGO</a>
+        </div>
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="Registro.html">REGISTRO</a></li>
+                <li><a href="Servicio.html"> SERVICIO</a></li>
+                <li><a href="Trabajo.html">TRABAJOS</a></li>
+               
+            </ul>
+
+        </nav>
+        <div class="nav-responsive" >
+            <i class="fa-solid fa-bars"></i><!--Icono hamburguesa-->
+        </div>
+    </header>
+</div>
+<!--Registro-->
+<div class="contenedor-registro">
+    <h2>REGISTRO</h2>
+    <form action="#">
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" required ><br>
+    <label for="apellido">Apellido</label><br>
+    <input type="text" id="apellido" name="apellido"><br>
+    <label for="correo">Email</label><br>
+    <input type="email" name="correo" id="correo" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/>
+    <label for="passwork">Password</label><br>
+    <input type="password" id="passwork" id="pass" pattern="[A-Za-z0-9!?-]{8,12}" required><br>
+    <label for="sexo">Sexo</label><br>
+    <input type="radio" id="sexo-masculino" name="sexo" value="Masculino">
+    <label for="sexo-masculino">Masculino</label>
+    <input type="radio" id="sexo-femenino" name="sexo" value="Femenino">
+    <label for="sexo-femenino">Femenino</label>
+    <button>Registrarse</button>
+</form>
+    </div> 
+<div class="img-fa">
+        <i class="fa-duotone fa-phone"></i>
+        <i class="fa-solid fa-envelope"></i>
+        <i class="fa-solid fa-mobile"></i>
+        <i class="fa-solid fa-at"></i>
+    </div>
+  <!--Footer-->
+  <footer class="footer">
+    <a href="#inicio" class="arriba">
+    </a>
+    <div class="redes">
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-skyper"></i></a>
+      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+  </footer>
+    <script src="js.js"></script>
+</body>
+</html>

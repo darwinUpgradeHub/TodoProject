@@ -1,0 +1,113 @@
+body {
+  background-color: black;
+  width: 100%;
+}
+
+nav {
+  background-color: #f0f0f0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  color: #000;
+}
+
+nav ul li a:hover {
+  background-color: #898989;
+}
+
+.carro1 {
+  width: 426px;
+}
+
+.padre2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.item {
+  text-align: center;
+}
+
+.item img {
+  max-width: 100%;
+  height: auto;
+}
+
+.item p {
+  margin-top: 10px;
+}
+
+.item img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.item p {
+  margin-top: 10px;
+}
+
+.padre {
+  background-image: url("https://images.unsplash.com/photo-1617531653332-bd46c24f2068?q=80&w=2115&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.padre .content {
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 80%;
+  text-align: center;
+}
+
+.padre .content h1 {
+  color: rgb(242, 242, 246);
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.padre .content p {
+  color: rgb(242, 242, 246);
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.padre .content button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.padre .content button:hover {
+  background-color: #0056b3;
+}
